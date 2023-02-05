@@ -20,10 +20,12 @@ def query_handler():
     global query_count
     
     try:
-        if sys.argv[2] == '-Pl':
+        if sys.argv[2] == '--plugin':
             query_file = "wp-plugins.txt"
-        elif sys.argv[2] == '-Co':
+        elif sys.argv[2] == '--content':
             query_file = "wp-plugins.txt"
+        elif sys.argv[2] == "--file":
+            query_file = sys.argv[3]
         else:
             print(RED + "Command Not Found")
     except IndexError:
@@ -43,7 +45,7 @@ def send_query(main_query, host, query_count):
     else:
         pass
 
-    print(YELLOW + f"Use {query_count} Best WordList\n")
+    print(YELLOW + f"Use {query_count} WordList\n")
 
     for query in main_query:
         url = f'{host}/{query}'
